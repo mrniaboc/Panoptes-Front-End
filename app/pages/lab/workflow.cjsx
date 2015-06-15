@@ -90,7 +90,8 @@ EditWorkflowPage = React.createClass
             <hr />
 
             <p>
-              <small className="form-help">Version {@props.workflow.version}</small>
+              <small className="form-help">Version {@props.workflow.version}</small>{' '}
+              <button type="button" onClick={@viewInProject}>View</button>
             </p>
             <p className="form-help"><small>Version indicates which version of the workflow you are on. Every time you save changes to a workflow, you create a new version. Big changes, like adding or deleting questions, will change the version by a whole number: 1.0 to 2.0, etc. Smaller changes, like modifying the help text, will change the version by a decimal, e.g. 2.0 to 2.1. The version is tracked with each classification in case you need it when analyzing your data.</small></p>
           </div>
@@ -222,6 +223,12 @@ EditWorkflowPage = React.createClass
 
     if @props.workflow.first_task not of @props.workflow.tasks
       @props.workflow.update first_task: Object.keys(@props.workflow.tasks)[0] ? ''
+
+  viewInProject: ->
+    alert = require '../../lib/alert'
+    ClassifyPage = require '../../pages/project/classify'
+    @props.project.get('owner').then (owner) =>
+      alert <ClassifyPage owner={owner} project={@props.project} query={workflow: @props.workflow.id} outOfContext />
 
 module.exports = React.createClass
   displayName: 'EditWorkflowPageWrapper'

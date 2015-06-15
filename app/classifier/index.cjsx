@@ -22,6 +22,7 @@ Classifier = React.createClass
     workflow: workflow
     subject: subject
     classification: classification
+    outOfContext: false
     onLoad: NOOP
 
   propChangeHandlers:
@@ -79,7 +80,7 @@ Classifier = React.createClass
                 {if nextTaskKey
                   <button type="button" className="continue major-button" disabled={waitingForAnswer} onClick={@addAnnotationForTask.bind this, nextTaskKey}>Next</button>
                 else
-                  <button type="button" className="continue major-button" disabled={waitingForAnswer} onClick={@completeClassification}>Done</button>}
+                  <button type="button" className="continue major-button" disabled={waitingForAnswer or @props.outOfContext} onClick={@completeClassification}>Done</button>}
               </nav>
             </div>
 
@@ -111,7 +112,8 @@ Classifier = React.createClass
       <hr />
 
       <nav className="task-nav">
-        <Link to="project-talk-subject" params={owner: @props.owner.slug, name: @props.project.slug, id: @props.subject.id} className="talk standard-button">Talk</Link>
+        {unless @props.outOfContext
+          <Link to="project-talk-subject" params={owner: @props.owner.slug, name: @props.project.slug, id: @props.subject.id} className="talk standard-button">Talk</Link>}
         <button type="button" className="continue major-button" onClick={@props.onClickNext}>Next</button>
       </nav>
     </div>
