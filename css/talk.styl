@@ -103,12 +103,13 @@ COPY_GREY_LIGHT = #afaeae
     margin-bottom: 10px
 
     > button
-      border: 1px solid LIGHT_GREY
-      color: LIGHT_GREY
+      color: COPY_GREY_LIGHT
       background: transparent
 
       &:hover
-        color: orangered
+        color: white
+        background: lighten(orangered, 10%)
+        border-color: orangered
 
     .talk-moderation-children
       p
