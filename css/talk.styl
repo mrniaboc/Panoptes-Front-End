@@ -73,10 +73,10 @@ COPY_GREY_LIGHT = #afaeae
 
   button
     @extend .standard-button
+    @extend .talk-module
     padding: 0.2em 0.4em
-    background: LIGHT_GREY
     font-size: 0.8em
-    border-radius: 3px
+    margin: 0
 
   select
     border: 2px solid LIGHT_GREY
@@ -263,6 +263,11 @@ COPY_GREY_LIGHT = #afaeae
         display: block
 
     .talk-comment-links
+      button
+        @extend .talk-module
+        padding: 2px
+        margin: 0
+
       button:not(:last-child)
         @extend .talk-left-buttons
 
