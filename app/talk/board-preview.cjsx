@@ -7,6 +7,7 @@ ChangeListener = require '../components/change-listener'
 PromiseRenderer = require '../components/promise-renderer'
 apiClient = require '../api/client'
 merge = require 'lodash.merge'
+Avatar = require '../partials/avatar'
 
 module?.exports = React.createClass
   displayName: 'TalkBoardDisplay'
@@ -30,7 +31,12 @@ module?.exports = React.createClass
       <PromiseRenderer promise={talkClient.type('discussions').get({board_id: @props.data.id}).index(0)}>{(discussion) =>
         if discussion?
           <div className="talk-discussion-link">
-            <Link to="user-profile" params={name: discussion.user_login}>{discussion.user_display_name}</Link>{' '}
+            <PromiseRenderer promise={apiClient.type('users').get(discussion.user_id.toString())}>{(user) =>
+              <Link className="user-profile-link" to="user-profile" params={name: discussion.user_login}>
+                <Avatar user={user} />{' '}{discussion.user_display_name}
+              </Link>
+            }</PromiseRenderer>{' '}
+
             <Link to="talk-discussion" params={board: discussion.board_id, discussion: discussion.id}>{discussion.title}</Link>{' '}
             <span>{timeAgo(discussion.updated_at)}</span>
           </div>
