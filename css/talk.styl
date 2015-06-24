@@ -1,16 +1,22 @@
 // talk default css rules
-TALK_BACKGROUND = #F2F1F1
-TALK_BORDER_RADIUS = 3px
+TALK_BACKGROUND = #f7f7f7
+TALK_BORDER = #F2F1F1
+TALK_BORDER_RADIUS = 6px
 TALK_PADDING = 5px
 TALK_MARGIN = 10px auto
+
+COPY_GREY_DARK = #404040
+COPY_GREY_MID = #898989
+COPY_GREY_LIGHT = #afaeae
 
 .talk-module // shared styles among talk box shaped things
   background: TALK_BACKGROUND
   border-radius: TALK_BORDER_RADIUS
+  border: 2px solid TALK_BORDER
   padding: TALK_PADDING
   margin: TALK_MARGIN
   box-sizing: border-box
-  color: black
+  color: COPY
 
 .talk-text-input // shared styles among talk text inputs
   border: none
@@ -40,7 +46,10 @@ TALK_MARGIN = 10px auto
     width: 80%
     border: 1px solid TALK_BACKGROUND
     border-right: none
+    font-style: italic
     height: 100%
+    line-height: 28px
+    padding-left: 5px
     border-radius: TALK_BORDER_RADIUS 0 0 TALK_BORDER_RADIUS
 
   button[type='submit']
@@ -61,7 +70,6 @@ TALK_MARGIN = 10px auto
 
   *
     box-sizing: border-box
-
 
   button
     @extend .standard-button
@@ -135,8 +143,15 @@ TALK_MARGIN = 10px auto
 
   .talk-board-preview
     @extend .talk-module
+    h1 a
+      color: COPY
+      text-decoration: none
     p
-      margin: 0.5em 0
+      margin: 0 0 5px 0
+      color: COPY_GREY_MID
+
+  .talk-discussion-link
+    color: COPY_GREY_LIGHT
 
   .talk-subject-display
     @extend .talk-module
@@ -160,6 +175,7 @@ TALK_MARGIN = 10px auto
     @extend .talk-module
     background: transparent
     border-radius: 0
+    border: none
     border-top: 1px solid LIGHT_GREY
 
     &:last-child
@@ -202,6 +218,7 @@ TALK_MARGIN = 10px auto
     @extend .talk-module
     text-align: center
     background: transparent
+    border: none
     color: grey
     float: left
     width: 20%
