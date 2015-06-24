@@ -1,6 +1,6 @@
 React = require 'react'
 {Link} = require 'react-router'
-{timestamp} = require './lib/time'
+{timestamp, timeAgo} = require './lib/time'
 resourceCount = require './lib/resource-count'
 talkClient = require '../api/talk'
 ChangeListener = require '../components/change-listener'
@@ -30,9 +30,9 @@ module?.exports = React.createClass
       <PromiseRenderer promise={talkClient.type('discussions').get({board_id: @props.data.id}).index(0)}>{(discussion) =>
         if discussion?
           <div className="talk-discussion-link">
-            Latest Discussion:&nbsp;
             <Link to="user-profile" params={name: discussion.user_login}>{discussion.user_display_name}</Link>{' '}
-            <Link to="talk-discussion" params={board: discussion.board_id, discussion: discussion.id}>{discussion.title}</Link>
+            <Link to="talk-discussion" params={board: discussion.board_id, discussion: discussion.id}>{discussion.title}</Link>{' '}
+            <span>{timeAgo(discussion.updated_at)}</span>
           </div>
       }</PromiseRenderer>
 
