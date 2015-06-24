@@ -143,12 +143,23 @@ COPY_GREY_LIGHT = #afaeae
 
   .talk-board-preview
     @extend .talk-module
+    overflow: auto
     h1 a
       color: COPY
       text-decoration: none
     p
       margin: 0 0 5px 0
       color: COPY_GREY_MID
+
+    .board-preview-content
+      width: 80%
+      float: left
+    .board-preview-stats
+      width: 20%
+      float: left
+      p i
+        width: 1em
+        text-align: center
 
   .talk-discussion-link
     color: COPY_GREY_LIGHT
