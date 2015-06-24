@@ -306,6 +306,10 @@ COPY_GREY_LIGHT = #afaeae
         &:not(:last-child)
           @extend .talk-left-buttons
 
+        &[type='submit']:hover
+          background-color: SUCCESS
+          border-color: darken(SUCCESS, 10%)
+
     .talk-comment-buttons-container
       display: block
       float: left
