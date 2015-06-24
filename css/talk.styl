@@ -44,7 +44,7 @@ COPY_GREY_LIGHT = #afaeae
   input[type='text']
     float: left
     width: 80%
-    border: 1px solid TALK_BACKGROUND
+    border: 2px solid TALK_BACKGROUND
     border-right: none
     font-style: italic
     height: 100%
@@ -58,7 +58,11 @@ COPY_GREY_LIGHT = #afaeae
     width: 20%
     color: COPY
     height: 100%
+    border-left: none
+    border-color: TALK_BACKGROUND
     border-radius: 0 TALK_BORDER_RADIUS TALK_BORDER_RADIUS 0
+    &:hover
+      background: MAIN_HIGHLIGHT
 
 .polaroid-image
   background: #fff
