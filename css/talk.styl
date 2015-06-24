@@ -78,6 +78,10 @@ COPY_GREY_LIGHT = #afaeae
     font-size: 0.8em
     margin: 0
 
+    &:hover
+      color: white
+      border-color: MAIN_HIGHLIGHT
+
   select
     border: 2px solid LIGHT_GREY
     background: #fff
@@ -263,11 +267,6 @@ COPY_GREY_LIGHT = #afaeae
         display: block
 
     .talk-comment-links
-      button
-        @extend .talk-module
-        padding: 2px
-        margin: 0
-
       button:not(:last-child)
         @extend .talk-left-buttons
 
